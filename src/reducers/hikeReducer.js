@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const hikesList = (state = [], action) => {
+const items = (state = [], action) => {
   if (action.type === 'FETCH_HIKES_SUCCESS') {
     return action.response;
   }
@@ -31,4 +31,4 @@ const errorMessage = (state = null, action) => {
   }
 };
 
-export default combineReducers({ hikesList, errorMessage, isFetching });
+export default combineReducers({ items, errorMessage, isFetching });

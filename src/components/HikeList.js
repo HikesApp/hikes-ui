@@ -9,10 +9,15 @@ class HikeList extends React.Component {
   }
 
   render() {
-    const renderHike = (hike, index) => <li key={index}>{hike.name} - {hike.startDate}</li>;
+    const { errorMessage, hikes } = this.props;
+
+    if (errorMessage) {
+      return <div>{errorMessage}</div>;
+    }
+
     return (
       <ul>
-        {this.props.hikes.map(renderHike)}
+        {hikes.map((hike, index) => <li key={index}>{hike.name} - {hike.startDate}</li>)}
       </ul>
     );
   }
@@ -21,10 +26,12 @@ class HikeList extends React.Component {
 HikeList.propTypes = {
   hikes: PropTypes.array.isRequired,
   fetchHikes: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
 };
 
 const mapStateToProps = ({ hikes }) => ({
-  hikes: hikes.hikesList,
+  hikes: hikes.items,
+  errorMessage: hikes.errorMessage,
 });
 
 const mapActionCreatorsToDispatch = {
