@@ -4,5 +4,8 @@
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true
     }
+  },
+  "rules": {
+    "no-shadow": ["off"]
   }
 }

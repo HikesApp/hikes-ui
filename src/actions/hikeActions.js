@@ -41,3 +41,23 @@ export const saveHike = (hike) => (dispatch) => {
         });
       });
 };
+
+export const deleteHike = (hikeId) => (dispatch) => {
+  dispatch({
+    type: 'DELETE_HIKE_REQUEST',
+  });
+
+  return api.deleteHike(hikeId)
+    .then(
+      () => {
+        dispatch({
+          type: 'DELETE_HIKE_SUCCESS',
+        });
+      },
+      error => {
+        dispatch({
+          type: 'DELETE_HIKE_FAILURE',
+          message: error.message || 'Something went wrong.',
+        });
+      });
+};

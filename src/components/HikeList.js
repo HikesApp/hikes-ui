@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchHikes } from '../actions/hikeActions';
+
+import { fetchHikes, deleteHike } from '../actions/hikeActions';
+import HikeCard from './HikeCard';
 
 class HikeList extends React.Component {
 
@@ -9,7 +11,10 @@ class HikeList extends React.Component {
   }
 
   render() {
-    const { errorMessage, hikes } = this.props;
+    const { errorMessage, hikes, deleteHike, fetchHikes } = this.props;
+
+    const deleteHandler = (id) => deleteHike(id).then(fetchHikes);
+    const renderHike = (hike) => <HikeCard key={hike.id} hike={hike} onDelete={deleteHandler} />;
 
     if (errorMessage) {
       return <div>{errorMessage}</div>;
@@ -17,7 +22,7 @@ class HikeList extends React.Component {
 
     return (
       <ul>
-        {hikes.map((hike, index) => <li key={index}>{hike.name} - {hike.startDate}</li>)}
+        {hikes.map(renderHike)}
       </ul>
     );
   }
@@ -26,6 +31,7 @@ class HikeList extends React.Component {
 HikeList.propTypes = {
   hikes: PropTypes.array.isRequired,
   fetchHikes: PropTypes.func.isRequired,
+  deleteHike: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,
 };
 
@@ -36,6 +42,7 @@ const mapStateToProps = ({ hikes }) => ({
 
 const mapActionCreatorsToDispatch = {
   fetchHikes,
+  deleteHike,
 };
 
 export default connect(mapStateToProps, mapActionCreatorsToDispatch)(HikeList);
