@@ -1,6 +1,14 @@
 language: node_js
+node_js:
+  - 4.2.3
+env:
+  global:
+    - AWS_ACCESS_KEY_ID=AKIAIEWBLBXEZJNPO5DQ
+    - AWS_DEFAULT_REGION=eu-west-2
+    - secure: Ywgxv8y0C5JJrHGRQP6wUNESAj8OFHT1/MIcMR1NNfCmHlQNESo3cc7bdtZFrdP1sr4AUbcTp2TM9w2bIfbdBk7DEUHkKgYvBsDI4jBFNEYmVkxxCQvuooVGn6zaPpwlr51NPuhqI1DxZQpYc3PGfeEQDzawzbCy1+v28b4nCBruDtxL/Xg1nu8oM76gB5T2qSFm3tdLNju5nHpUfQvHIKgzLjYpsU1aWK9xocF6MA8FwHe4uQQ4Si9P0MHWvkzJUxyW18QX7BDzDZK7/KD58dsVM9E3ofwcQIiyu20ZxFg1HyS8OpZ2jhthhXBfDz6q3W6zy8tjyLAZfVm9op7zsA==
 build:
-  pre_ci:
-    - npm install
   ci:
-    - npm build
+    - npm install
+    - npm run build
+  on_success:
+    - aws s3 sync dist s3://hikes-ui --region eu-west-2 --acl public-read --delete --cache-control "public, no-cache, max-age=43200"
