@@ -16,5 +16,8 @@ module.exports = {
       include: __dirname,
     }],
   },
-  plugins: [new HtmlWebpackPlugin({template: 'index.html.ejs'})]
+  plugins: [new HtmlWebpackPlugin({
+    template: 'index.html.ejs',
+    favicon  : path.join(__dirname, 'public', 'favicon.png'),
+  })]
 };
