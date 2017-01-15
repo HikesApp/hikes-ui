@@ -1,2 +1,1 @@
-export const fetchHikes = () => fetch('http://localhost:8080/hikes').then(response => response.json());
-
+export const fetchHikes = () => fetch('https://hikes-service-dev.herokuapp.com/hikes').then(response => response.json());

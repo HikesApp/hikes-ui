@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "description": "Hikes UI",
   "scripts": {
+    "clean": "rimraf dist",
     "start": "babel-node devServer.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "build": "npm run clean && webpack"
   },
   "repository": {
     "type": "git",
@@ -35,7 +37,9 @@
     "eslint-plugin-jsx-a11y": "^1.0.4",
     "eslint-plugin-react": "^5.0.1",
     "express": "^4.13.3",
-    "webpack": "^1.9.11",
+    "html-webpack-plugin": "^2.26.0",
+    "rimraf": "^2.5.4",
+    "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.2.0"
   }
 }

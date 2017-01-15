@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
-import config from './webpack.config.babel';
+import config from './webpack.config';
 import Express from 'express';
 
 const app = new Express();
@@ -14,7 +14,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(port, error => {

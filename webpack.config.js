@@ -1,12 +1,12 @@
-import path from 'path';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-export default {
+module.exports = {
   devtool: 'eval',
   entry: './src/index',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/',
   },
   module: {
     loaders: [{
@@ -16,4 +16,5 @@ export default {
       include: __dirname,
     }],
   },
+  plugins: [new HtmlWebpackPlugin({template: 'index.html.ejs'})]
 };
