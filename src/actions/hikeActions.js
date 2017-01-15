@@ -20,3 +20,24 @@ export const fetchHikes = () => (dispatch) => {
         });
       });
 };
+
+export const saveHike = (hike) => (dispatch) => {
+  dispatch({
+    type: 'SAVE_HIKE_REQUEST',
+  });
+
+  return api.saveHike(hike)
+    .then(
+      response => {
+        dispatch({
+          type: 'SAVE_HIKE_SUCCESS',
+          response,
+        });
+      },
+      error => {
+        dispatch({
+          type: 'SAVE_HIKE_FAILURE',
+          message: error.message || 'Something went wrong.',
+        });
+      });
+};
