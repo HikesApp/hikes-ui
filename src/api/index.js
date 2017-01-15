@@ -1,5 +1,4 @@
-// const HIKES_URL = 'https://hikes-service-dev.herokuapp.com/hikes';
-const HIKES_URL = 'http://localhost:8080/hikes';
+const HIKES_URL = 'https://hikes-service-dev.herokuapp.com/hikes';
 
 const toJson = response => response.json();
 
