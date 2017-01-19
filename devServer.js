@@ -14,7 +14,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'dist', 'index.html'));
 });
 
 app.listen(port, error => {

@@ -9,6 +9,8 @@ env:
 build:
   ci:
     - npm install
+    - npm test
+    - cp build/TESTS-*.xml shippable/testresults/
     - npm run build
   on_success:
-    - aws s3 sync dist s3://hikes-ui --region eu-west-2 --acl public-read --delete --cache-control "public, no-cache, max-age=43200"
+    - aws s3 sync build/dist s3://hikes-ui --region eu-west-2 --acl public-read --delete --cache-control "public, no-cache, max-age=43200"

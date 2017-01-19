@@ -1,6 +1,6 @@
-import * as api from '../api';
+import * as defaultApi from '../api';
 
-export const fetchHikes = () => (dispatch) => {
+export const fetchHikes = () => (dispatch, getState, api = defaultApi) => {
   dispatch({
     type: 'FETCH_HIKES_REQUEST',
   });
