@@ -1,6 +1,9 @@
 const webpackConfig = require('./webpack.config');
 
-const TEST_SOURCES = 'src/**/*.spec.js';
+process.env.BABEL_ENV='test';
+
+const TESTS = 'src/**/*.spec.js';
+const SOURCES = 'src/**/!(*.spec.js)';
 
 module.exports = function(config) {
   config.set({
@@ -8,16 +11,26 @@ module.exports = function(config) {
     frameworks: ['mocha', 'chai', 'sinon'],
     files: [
       './node_modules/promise-polyfill/promise.js',
-      TEST_SOURCES
+      TESTS,
+      SOURCES
     ],
+    exclude: ['src/index.js'],
     preprocessors: {
-      [TEST_SOURCES]: ['webpack']
+      [TESTS]: ['webpack'],
+      [SOURCES]: ['webpack']
     },
     webpack: webpackConfig,
     webpackMiddleware: {noInfo: true},
-    reporters: ['progress', 'junit'],
+    reporters: ['progress', 'junit', 'coverage'],
+    coverageReporter: {
+      reporters: [
+        {type: 'lcov', dir: 'build/codecoverage', subdir: '.'},
+        {type: 'cobertura', dir: 'build/codecoverage', subdir: '.'},
+        {type: 'text-summary'}
+      ]
+    },
     junitReporter: {
-      outputDir: 'build',
+      outputDir: 'build/testresults',
     },
     port: 9876,
     colors: true,
