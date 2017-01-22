@@ -1,6 +1,4 @@
-import * as defaultApi from '../api';
-
-export const fetchHikes = () => (dispatch, getState, api = defaultApi) => {
+export const fetchHikes = () => (dispatch, getState, api) => {
   dispatch({
     type: 'FETCH_HIKES_REQUEST',
   });
@@ -21,7 +19,7 @@ export const fetchHikes = () => (dispatch, getState, api = defaultApi) => {
       });
 };
 
-export const saveHike = (hike) => (dispatch) => {
+export const saveHike = (hike) => (dispatch, getState, api) => {
   dispatch({
     type: 'SAVE_HIKE_REQUEST',
   });
@@ -42,7 +40,7 @@ export const saveHike = (hike) => (dispatch) => {
       });
 };
 
-export const deleteHike = (hikeId) => (dispatch) => {
+export const deleteHike = (hikeId) => (dispatch, getState, api) => {
   dispatch({
     type: 'DELETE_HIKE_REQUEST',
   });

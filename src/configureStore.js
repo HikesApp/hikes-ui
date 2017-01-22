@@ -3,12 +3,12 @@ import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import * as api from './api';
 import hikesApp from './reducers';
 
 const configureStore = () => {
-  const middlewares = [thunk];
+  const middlewares = [thunk.withExtraArgument(api)];
   if (process.env.NODE_ENV !== 'production') {
-    console.log('NOT PRODUCTION!!!!');
     middlewares.push(createLogger());
   }
 
