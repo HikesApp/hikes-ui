@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { push as navigateTo } from 'react-router-redux';
 
@@ -10,10 +9,7 @@ const createSubmitHandler = (saveHike, navigateTo) => (hike) =>
   saveHike(hike).then(() => navigateTo('/'));
 
 const AddHike = ({ saveHike, navigateTo }) => (
-  <div>
-    <HikeForm onSubmit={createSubmitHandler(saveHike, navigateTo)} />
-    <Link to="/">Cancel</Link>
-  </div>
+  <HikeForm onSubmit={createSubmitHandler(saveHike, navigateTo)} />
 );
 
 AddHike.propTypes = {

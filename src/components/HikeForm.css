@@ -1,0 +1,12 @@
+.form {
+  max-width: 600px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footer button {
+  margin: 1rem auto;
+  display: block;
+}

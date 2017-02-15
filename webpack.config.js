@@ -9,12 +9,27 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel-loader'],
-      exclude: /node_modules/,
-      include: __dirname,
-    }],
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['babel-loader'],
+        exclude: /node_modules/,
+        include: __dirname,
+      },
+      {
+        test: /.*(normalize|skeleton|raleway)\.css$/,
+        loaders: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.css$/,
+        exclude: /.*(normalize|skeleton|raleway)\.css$/,
+        loaders: ['style-loader', 'css-loader?modules=true'],
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=public/fonts/[name].[ext]',
+      },
+    ],
   },
   plugins: [new HtmlWebpackPlugin({
     template: 'index.html.ejs',

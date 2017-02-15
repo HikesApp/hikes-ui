@@ -5,8 +5,9 @@ import HikeList from './HikeList';
 
 const App = () => (
   <div>
+    <h1>My Hikes</h1>
     <HikeList />
-    <Link to="/add-hike">Add hike</Link>
+    <Link className="button button-primary" to="/add-hike">Add hike</Link>
   </div>
 );
 
