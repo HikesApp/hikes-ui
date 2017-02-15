@@ -49,6 +49,7 @@
     "eslint-plugin-react": "^5.0.1",
     "eslint-watch": "^2.1.14",
     "express": "^4.13.3",
+    "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.26.0",
     "karma": "^1.4.0",
     "karma-chai": "^0.1.0",
