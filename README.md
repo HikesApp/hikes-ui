@@ -4,4 +4,4 @@
 
 Front end for app for managing hikes 
 
-Deployed version is available [here](http://hikes-ui.s3-website.eu-west-2.amazonaws.com/);
+Deployed version is available [here](http://d2z46mha7ruo62.cloudfront.net/);
