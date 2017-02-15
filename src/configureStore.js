@@ -3,8 +3,8 @@ import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import * as api from './api';
-import hikesApp from './reducers';
+import * as api from './api/api';
+import hikesApp from './reducers/rootReducer';
 
 const configureStore = () => {
   const middlewares = [thunk.withExtraArgument(api)];
@@ -13,8 +13,6 @@ const configureStore = () => {
   }
 
   const storeEnhancer = applyMiddleware(...middlewares);
-
-  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 
   return createStore(
     hikesApp,
