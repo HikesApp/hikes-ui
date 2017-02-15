@@ -18,6 +18,6 @@ module.exports = {
   },
   plugins: [new HtmlWebpackPlugin({
     template: 'index.html.ejs',
-    favicon  : path.join(__dirname, 'public', 'favicon.png'),
-  })]
+    favicon: path.join(__dirname, 'public', 'favicon.png'),
+  })],
 };

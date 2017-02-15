@@ -4,10 +4,13 @@
   "description": "Hikes UI",
   "scripts": {
     "clean": "rimraf build",
-    "test": "npm run clean && karma start",
-    "watch:test": "npm test -- --auto-watch --no-single-run",
-    "start": "babel-node devServer.js",
-    "lint": "eslint src",
+    "pretest": "npm-run-all clean lint",
+    "test": "karma start",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:test": "npm t -- --no-single-run",
+    "watch:lint": "npm run lint -- -w",
+    "start": "babel-node devServer.js ",
+    "lint": "esw",
     "build": "npm run clean && webpack -p"
   },
   "repository": {
@@ -41,6 +44,7 @@
     "eslint-plugin-import": "^1.6.1",
     "eslint-plugin-jsx-a11y": "^1.0.4",
     "eslint-plugin-react": "^5.0.1",
+    "eslint-watch": "^2.1.14",
     "express": "^4.13.3",
     "html-webpack-plugin": "^2.26.0",
     "karma": "^1.4.0",
@@ -52,6 +56,7 @@
     "karma-sinon": "^1.0.5",
     "karma-webpack": "^2.0.1",
     "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.1",
     "phantomjs-prebuilt": "^2.1.14",
     "promise-polyfill": "^6.0.2",
     "redux-devtools-extension": "^1.0.0",
