@@ -1,12 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import HikeList from './HikeList';
-import AddHike from './AddHike';
 
 const App = () => (
   <div>
     <HikeList />
-    <AddHike />
+    <Link to="/add-hike">Add hike</Link>
   </div>
 );
 

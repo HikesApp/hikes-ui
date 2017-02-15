@@ -8,13 +8,16 @@ const app = new Express();
 const port = 3000;
 
 const compiler = webpack(config);
-app.use(webpackDevMiddleware(compiler, {
+const devMiddleware = webpackDevMiddleware(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath,
-}));
+});
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'dist', 'index.html'));
+app.use(devMiddleware);
+
+app.get('*', (req, res) => {
+  const index = devMiddleware.fileSystem.readFileSync(path.join(config.output.path, 'index.html'));
+  res.end(index);
 });
 
 app.listen(port, error => {

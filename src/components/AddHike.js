@@ -1,23 +1,25 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { reset as resetForm } from 'redux-form';
+import { push as navigateTo } from 'react-router-redux';
 
 import { saveHike } from '../actions/hikeActions';
 import HikeForm from './HikeForm';
 
-const createSubmitHandler = (saveHike, resetForm) => (hike) =>
-  saveHike(hike).then(() => resetForm('hike'));
+const createSubmitHandler = (saveHike, navigateTo) => (hike) =>
+  saveHike(hike).then(() => navigateTo('/'));
 
-const AddHike = ({ saveHike, resetForm }) => (
+const AddHike = ({ saveHike, navigateTo }) => (
   <div>
-    <HikeForm onSubmit={createSubmitHandler(saveHike, resetForm)} />
+    <HikeForm onSubmit={createSubmitHandler(saveHike, navigateTo)} />
+    <Link to="/">Cancel</Link>
   </div>
 );
 
 AddHike.propTypes = {
   saveHike: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired,
 };
 
 
-export default connect(null, { saveHike, resetForm })(AddHike);
+export default connect(null, { saveHike, navigateTo })(AddHike);
