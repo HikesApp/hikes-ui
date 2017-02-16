@@ -2,11 +2,11 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import Root from './components/Root';
-import configureStore from './configureStore';
+import 'skeleton-css/css/normalize.css';
+import 'skeleton-css/css/skeleton.css';
+import 'raleway-webfont/raleway.css';
 
-require('skeleton-css/css/normalize.css');
-require('skeleton-css/css/skeleton.css');
-require('raleway-webfont/raleway.css');
+import configureStore from './configureStore';
 
 const store = configureStore();
 render(
